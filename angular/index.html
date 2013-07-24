@@ -1,0 +1,30 @@
+<html ng-app="plumbApp">
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../common/js/jquery-1.9.0-min.js"></script>
+    <script type="text/javascript" src="../common/js/jquery-ui-1.9.2-min.js"></script>
+    <script type="text/javascript" src="../common/js/jquery.jsPlumb-1.4.1-all-min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/example.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../common/css/common.css">
+
+    <title>Getting started with jsPlumb</title>
+  </head>  
+
+  <body ng-controller="PlumbCtrl">
+    <h1>Getting started with jsPlumb</h1>
+    <p>From the blog by <a href="http://blog.emielhollander.nl/2013/01/getting-started-with-jsplumb/">Emiel Hollander</a>. An experiment to see if I can get AngularJS to work together with jsPlumb.</p>
+    <p>This example uses AngularJS and jQuery. Double-click in the container.</p>
+
+    <div id="container" ng-dblclick="addState($event)">
+
+      <div plumb-item class="item" ng-repeat="state in states" ng-style="{ 'left':state.x, 'top':state.y }">
+		    <div class="title">State {{state.name}}</div>
+		    <div plumb-connect class="connect"></div>
+      </div> 
+    </div>
+  </body>
+
+
+</html>
