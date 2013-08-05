@@ -1,6 +1,6 @@
 var myApp = angular.module('plumbApp', [])
 
-function PlumbCtrl($scope) {
+myApp.controller('PlumbCtrl', function($scope) {
 	$scope.states = [];
 	$scope.index = 0;
 
@@ -13,12 +13,21 @@ function PlumbCtrl($scope) {
 		});
 		$scope.index++;
 	}
-}
+
+    $scope.removeState = function(index) {
+		console.log("Remove state" + index);
+		delete $scope.states[index];
+		//$scope.states.splice(index, 1);
+		//$scope.index--;
+	}
+
+})
 
 
 myApp.directive('plumbItem', function() {
 	return {
 		replace: true,
+		controller: 'PlumbCtrl',
 		link: function (scope, element, attrs) {
 			console.log("Add plumbing for the 'item' element");
 
@@ -33,7 +42,8 @@ myApp.directive('plumbItem', function() {
 				jsPlumb.detachAllConnections($(this));
 				$(this).remove();
 				// stop event propagation, so it does not directly generate a new state
-				e.stopPropagation();				
+				e.stopPropagation();
+				//controller.removeState(attrs.name); // or add to element ng-dblclick="removeState(attrs.name)"
 			});
 
 		}

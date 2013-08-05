@@ -19,10 +19,13 @@
 
     <div id="container" ng-dblclick="addState($event)">
 
-      <div plumb-item class="item" ng-repeat="state in states" ng-style="{ 'left':state.x, 'top':state.y }">
+      <div plumb-item class="item" ng-repeat="state in states" ng-style="{ 'left':state.x, 'top':state.y }" name="{{state.name}}">
 		    <div class="title">State {{state.name}}</div>
 		    <div plumb-connect class="connect"></div>
       </div> 
+      <p>
+      Number of states: {{states.length}}
+      </p>
     </div>
   </body>
 

@@ -7,4 +7,7 @@ The two folders:
 * jquery: the default trom the blog by [Emiel Hollander](http://blog.emielhollander.nl/2013/01/getting-started-with-jsplumb).
 * angular: the changes to integrate with AngularJS.
 
+## Copyright
 
+Author: Anne C. van Rossum
+License: LGPLv3
