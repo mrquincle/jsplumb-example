@@ -27,14 +27,12 @@ myApp.controller('PlumbCtrl', function($scope) {
 			// compare in non-strict manner
 			if ($scope.states[i].identifier == identifier) {
 				console.log("Remove state at position " + i);
-				//delete $scope.states[i];
 				$scope.states.splice(i, 1);
 			}
 		}
-		//$scope.states.splice(identifier, 1);
 		$scope.count--;
 		console.log("Count became " + $scope.count);
-		$scope.apply
+		
 	}
 
 })
@@ -47,9 +45,6 @@ myApp.directive('plumbItem', function() {
 	return {
 		replace: true,
 		controller: 'PlumbCtrl',
-		// scope: {
-		// 	isolatedBinding:'=plumbBinding'
-		// }
 		link: function (scope, element, attrs) {
 			console.log("Add plumbing for the 'item' element");
 
@@ -60,17 +55,15 @@ myApp.directive('plumbItem', function() {
 				containment: 'parent'
 			});
 
-			//element.setAttribute('ng-model','isolatedBinding');
-
+			// this should actually done by a AngularJS template and subsequently a controller attached to the dbl-click event
 			element.bind('dblclick', function(e) {
 				jsPlumb.detachAllConnections($(this));
 				$(this).remove();
 				// stop event propagation, so it does not directly generate a new state
 				e.stopPropagation();
-				//controller.removeState(attrs.identifier); // or add to element ng-dblclick="removeState(attrs.identifier)"
-				//scope is not the same here...
-				
+				//we need the scope of the parent, here assuming <plumb-item> is part of the <plumbApp>			
 				scope.$parent.removeState(attrs.identifier);
+				scope.$parent.$digest();
 			});
 
 		}
