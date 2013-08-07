@@ -2,34 +2,68 @@
 	padding: 10px;
 	cursor: move;
 	font-weight: bold;
+	font-size: 120%;
 }
 	
 .connect {
 	width: 100%;
 	height: 20px;
 	cursor: pointer;
-	background-color:#40B3DF;
+	background-color: #40B3DF;
 }
 
-.item {
+.summary {
+	padding: 10px;
+	cursor: move;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.menu-item {
 	position: absolute;        
 	border: 1px solid black;
-	width: 200px;
-# keep transparent	background-color:#FFFFFF;
+	width: 150px;
+	font-size: 80%;
+    background-color:#FFFFFF;
 	text-align: center;
 	-moz-box-shadow: 2px 2px 3px 1px #AAA;
 	-webkit-box-shadow: 2px 2px 3px 1px #AAA;
 	box-shadow: 2px 2px 3px 1px #AAA;
 }
 
+.item {
+	position: absolute;        
+	border: 1px solid black;
+	width: 150px;
+	font-size: 80%;
+    background-color:#FFFFFF;
+	text-align: center;
+	-moz-box-shadow: 2px 2px 3px 1px #AAA;
+	-webkit-box-shadow: 2px 2px 3px 1px #AAA;
+	box-shadow: 2px 2px 3px 1px #AAA;
+}
+
+/* the container is 200px (size of menu-container) plus 3 times 250px + 2px per border*/
 #container {
 	border: 2px solid gray;
-	width: 1000px;
+	width: 958px;
 	height: 500px;
 }
 
-.sub-container {
-	border: 1px solid gray;
-	width: 250px;
-	height: 500px;
+/* the menu is 200px wide */
+#menu-container {
+	float: left;
+	border: 2px solid gray;
+	border-right: 4px solid gray;
+	width: 200px;
+	height: 497px;
+	background-color: #F3F2F4;
 }
+
+.verticalLine {
+	float: left;
+	border-right: 2px solid gray;
+	width: 1px;
+	height: 498px;
+}
+
