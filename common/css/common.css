@@ -1,24 +1,35 @@
 .title {
 	padding: 10px;
 	cursor: move;
+	font-weight: bold;
 }
 	
 .connect {
 	width: 100%;
 	height: 20px;
-	background-color: white;
 	cursor: pointer;
+	background-color:#40B3DF;
 }
 
 .item {
 	position: absolute;        
 	border: 1px solid black;
-	background-color: #ddddff;
+	width: 200px;
+# keep transparent	background-color:#FFFFFF;
+	text-align: center;
+	-moz-box-shadow: 2px 2px 3px 1px #AAA;
+	-webkit-box-shadow: 2px 2px 3px 1px #AAA;
+	box-shadow: 2px 2px 3px 1px #AAA;
 }
 
 #container {
-	border: 1px solid gray;
-	width: 500px;
+	border: 2px solid gray;
+	width: 1000px;
 	height: 500px;
 }
 
+.sub-container {
+	border: 1px solid gray;
+	width: 250px;
+	height: 500px;
+}

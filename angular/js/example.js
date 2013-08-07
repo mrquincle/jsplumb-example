@@ -2,23 +2,49 @@ var myApp = angular.module('plumbApp', [])
 
 // controllers manage an object $scope in AngularJS (this is the view model)
 myApp.controller('PlumbCtrl', function($scope) {
-	// state is [identifier, x, y]
+	// state is [identifier, x position, y position, title, description]
 	$scope.states = [];
 	// index should always yield a unique identifier, can never be decreased
 	$scope.index = 0; 
 	// count is number of states, and gets decreased when states are removed
 	$scope.count = 0;
 
-	$scope.addState = function(event) {
-		console.log("Add an additional state");
+	$scope.topleft = {
+		x: 15,
+		y: 145
+	};
+
+	$scope.margin = 5;
+	$scope.statesize = 150;
+
+    $scope.redraw = function() {
+    	$scope.count = 0 ;
+    	$scope.index = 0;
+    	//jsPlumb.detachAllConnections($scope); // this scope is not correct
+    	jsPlumb.detachEveryConnection();
+    	$scope.states = [];
+    	$scope.addState("Sum", "Aggregates an incoming sequences of values and returns the sum", 
+    		$scope.topleft.x+$scope.margin, $scope.topleft.y+$scope.margin); 
+    	$scope.addState("Camera", "Hooks up to hardware camera and sends out an image at 20 Hz", 
+    		$scope.topleft.x+$scope.margin, $scope.topleft.y+$scope.margin+$scope.statesize); 
+    }
+
+	$scope.addEvent = function(event) {
+		$scope.addState("Default " + $scope.index, "Default stuff", event.pageX, event.pageY);
+	}
+
+	$scope.addState = function(title, description, posX, posY) {
+		console.log("Add state " + title + " at position " + posX + "," + posY);
 		$scope.states.push({
 			identifier: $scope.index,
-			x: event.pageX,
-			y: event.pageY
+			x: posX,
+			y: posY,
+			title: title,
+			description: description
 		});
 		$scope.index++;
 		$scope.count++;
-		console.log("Count became " + $scope.count);
+		console.log("Count became " + $scope.count);		
 	}
 
     $scope.removeState = function(identifier) {
