@@ -1,10 +1,11 @@
-<html ng-app="plumbApp">
+<html>
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="../common/js/jquery-1.9.0-min.js"></script>
 <script type="text/javascript" src="../common/js/jquery-ui-1.9.2-min.js"></script>
 <script type="text/javascript" src="../common/js/jquery.jsPlumb-1.4.1-all-min.js"></script>
-<script type="text/javascript" src="js/angular.min.js"></script>
+<!-- We get now a recent version of angularjs from a CDN -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
 <script type="text/javascript" src="js/example.js"></script>
 
 <link href="../common/css/bootstrap.min.css" rel="stylesheet">
@@ -13,14 +14,15 @@
 <title>Getting started with jsPlumb</title>
 </head>
 
-<body ng-controller="PlumbCtrl">
+<body ng-app="plumbApp">
+<div ng-controller="PlumbCtrl">
 	<h1>Getting started with jsPlumb</h1>
 	<p>
-		From the blog by <a href="http://blog.emielhollander.nl/2013/01/getting-started-with-jsplumb/">Emiel Hollander</a>. An
-		experiment to see if I can get AngularJS to work together with jsPlumb.
+	From the blog by <a href="http://blog.emielhollander.nl/2013/01/getting-started-with-jsplumb/">Emiel Hollander</a>. An
+	experiment to see if I can get AngularJS to work together with jsPlumb.
 	</p>
 	<p>This example uses AngularJS as well as jQuery (hard to do without). Click or double-click in the container to
-		find out.</p>
+	find out.</p>
 
 	<div id="container" class="drop-container" ng-click="addEvent($event)" droppable>
 		<div id="menu-container">
@@ -44,12 +46,14 @@
 
 	<p>
 
-		<button type="button" class="btn btn-primary" ng-click="redraw()">Redraw</button>
+	<button type="button" class="btn btn-primary" ng-click="redraw()">Redraw</button>
 	</p>
 
 	<!--  does not render what comes behind it, so it's probably wrong -->
 	<div post-render></div>
 
+	<span ng-init="init()"></span>
+</div>
 </body>
 
 

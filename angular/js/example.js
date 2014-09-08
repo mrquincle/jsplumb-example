@@ -87,6 +87,17 @@ myApp.controller('PlumbCtrl', function($scope) {
 		}
 	};
 
+	$scope.init = function() {
+		jsPlumb.bind("ready", function() {
+			console.log("Set up jsPlumb listeners (should be only done once)");
+			//Some JSPlub - Event Listeners
+			jsPlumb.bind("connection", function (info) {
+				$scope.$apply(function () {
+					console.log("Possibility to push connection into array");
+				});
+			});
+		});
+	}
 });
 
 myApp.directive('postRender', [ '$timeout', function($timeout) {
@@ -136,10 +147,10 @@ myApp.directive('plumbItem', function() {
 	};
 });
 
-/**
- * This directive should allow an element to be dragged onto the main canvas. Then after it is dropped, it should be
- * painted again on its original position, and the full module should be displayed on the dragged to location.
- */
+//
+// This directive should allow an element to be dragged onto the main canvas. Then after it is dropped, it should be
+// painted again on its original position, and the full module should be displayed on the dragged to location.
+//
 myApp.directive('plumbMenuItem', function() {
 	return {
 		replace: true,
@@ -171,7 +182,6 @@ myApp.directive('plumbConnect', function() {
 					lineWidth:2 
 				},
 			});
-
 		}
 	};
 });
@@ -212,6 +222,7 @@ myApp.directive('draggable', function() {
 		restrict:'A',
 		//The link function is responsible for registering DOM listeners as well as updating the DOM.
 		link: function(scope, element, attrs) {
+			console.log("Let draggable item snap back to previous position");
 			element.draggable({
 				// let it go back to its original position
 				revert:true,
@@ -219,3 +230,4 @@ myApp.directive('draggable', function() {
 		}
 	};
 });
+
